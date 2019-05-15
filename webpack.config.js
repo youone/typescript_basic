@@ -2,9 +2,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+    mode: 'development',
     entry: path.join(__dirname, '/src/index.ts'),
     output: {
-        filename: 'index.js',
+        filename: 'bundle.js',
         path: path.join(__dirname, './dist')
     },
     module: {
@@ -21,7 +22,7 @@ module.exports = {
     },
 
     devServer: {
-        port:4000,
+        port:3000,
         contentBase: path.join(__dirname, './dist'),
         inline: true,
         hot: true,

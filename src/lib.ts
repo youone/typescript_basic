@@ -1,4 +1,4 @@
-export class Hero {
+export class MyClass {
     id: number;
     name: string;
 
@@ -12,6 +12,6 @@ export class Hero {
     }
 }
 
-export function ftest(hero: Hero) {
-    console.log(hero);
+export function ftest(obj: MyClass) {
+    console.log(obj);
 }
