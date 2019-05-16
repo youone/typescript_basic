@@ -3,9 +3,12 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-    entry: path.join(__dirname, '/src/index.ts'),
+    entry: {
+        main: path.join(__dirname, '/src/index.ts'),
+        second: path.join(__dirname, '/src/second.js')
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.join(__dirname, './dist')
     },
     module: {
@@ -14,6 +17,21 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                include: [/node_modules/, path.resolve(__dirname, 'src')]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|png|gif)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'assets/'
+                    }
+                }]
             },
         ]
     },
@@ -30,7 +48,13 @@ module.exports = {
     },
 
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            chunks: ['main']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'second.html',
+            chunks: ['second']
+        }),
     ],
 
 

@@ -11,14 +11,25 @@ class MyElement extends HTMLElement {
         <div id="content">content of my-element</div>
     `;
 
+    public prop1: number;
+
     constructor(obj: MyClass) {
         super();
-        console.log('my-element constructed');
+        console.log('my-element constructed', obj);
     }
 
     connectedCallback() {
         this.innerHTML = this.template;
         console.log('my-element connected');
+    }
+
+    set prop2(value: number) {
+        console.log('setting prop1', value);
+    }
+
+    get prop2(): number {
+        console.log('getting prop1');
+        return 99;
     }
 }
 

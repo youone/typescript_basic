@@ -5,7 +5,6 @@
     <scripts>
       <script value="build" />
     </scripts>
-    <arguments value="dev" />
     <node-interpreter value="project" />
     <envs />
     <method />
