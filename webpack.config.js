@@ -1,10 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
     entry: {
         main: path.join(__dirname, '/src/index.ts'),
+        jqxtest: path.join(__dirname, '/src/jqxtest.ts'),
         second: path.join(__dirname, '/src/second.js')
     },
     output: {
@@ -55,6 +57,14 @@ module.exports = {
             filename: 'second.html',
             chunks: ['second']
         }),
+        new HtmlWebpackPlugin({
+            filename: 'jqxtest.html',
+            chunks: ['jqxtest']
+        }),
+        new webpack.ProvidePlugin({
+            $$: 'jquery',
+            // jQuery: 'jquery'
+        })
     ],
 
 

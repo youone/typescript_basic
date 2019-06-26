@@ -1,3 +1,5 @@
+
+
 export class MyClass {
     id: number;
     name: string;
@@ -6,7 +8,7 @@ export class MyClass {
         this.name = name;
     }
 
-    myName()
+    myName () : string
     {
         return this.name;
     }

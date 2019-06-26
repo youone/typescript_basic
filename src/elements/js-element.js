@@ -4,11 +4,10 @@ const template = `
         color: blue;
     }
 </style>
-<div id="content"><button>test2</button></div>
+<div id="content"><button>js button</button></div>
 `;
 
 class JsElement extends HTMLElement {
-
 
     constructor(obj) {
         super();
